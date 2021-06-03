@@ -1,30 +1,6 @@
-<!DOCTYPE html>
-<html>
+@extends('layout.app')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>One-Banking</title>
-    <link rel="stylesheet" href="assets-homepage/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
-    <link rel="stylesheet" href="assets-homepage/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets-homepage/css/styles.min.css">
-</head>
-
-<body id="page-top">
-    <nav class="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav">
-        <div class="container"><a class="navbar-brand text-dark js-scroll-trigger" href="#page-top">One-<strong>Banking</strong></a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler float-right" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav text-dark ml-auto">
-                    <li class="nav-item"><a class="nav-link text-dark js-scroll-trigger" href="#download">home</a></li>
-                    <li class="nav-item"><a class="nav-link text-dark js-scroll-trigger" href="#features">About Us<br></a></li>
-                    <li class="nav-item"><a class="nav-link text-dark js-scroll-trigger" href="#contact">Contact</a></li>
-                </ul><button class="btn btn-aktif" type="button">Log in</button>
-            </div>
-        </div>
-    </nav>
+@section('content')
     <header id="page-top" class="mast">
         <div class="container h-100">
             <div class="row h-100">
@@ -88,31 +64,4 @@
             </ul>
         </div>
     </section>
-    <footer class="bg-color-purple">
-        <div class="container">
-            <h5></h5>
-            <h3 class="text-left">One-<strong>Banking</strong></h3>
-            <p class="text-left">Your money solution<br></p>
-            <h3 class="text-right" style="margin-top: -60px">Contact Us</h3>
-            <ul class="list-inline text-right list-social font-weight-bolder">
-                <li class="list-inline-item social-twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li class="list-inline-item social-facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li class="list-inline-item social-google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-            </ul>
-            <p>© One-<strong>Banking</strong> 2021. All Rights Reserved.</p>
-            <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Privacy</a></li>
-                <li class="list-inline-item"><a href="#">Terms</a></li>
-                <li class="list-inline-item"><a href="#">FAQ</a></li>
-            </ul>
-        </div>
-    </footer>
-    <script src="assets-homepage/js/jquery.min.js"></script>
-    <script src="assets-homepage/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-    <script src="assets-homepage/js/script.min.js"></script>
-</body>
-
-</html>
-</body>
-</html>
+@endsection
