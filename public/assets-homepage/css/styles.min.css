@@ -1,1 +1,87 @@
-section.bg-custom{background-image:url(../../assets-homepage/img/Group1365.svg);position:relative;background-repeat:no-repeat;background-position:50%;background-size:cover;padding:250px 0}.mast{position:relative;width:100%;padding-top:100px;padding-bottom:100px}@media (min-width:992px){.mast,header.masth{height:100vh;min-height:775px;padding-top:0;padding-bottom:0}}.img-size{box-sizing:border-box;width:70vh}.nav-item.aktif{color:#fff;background-color:#acadea;border-radius:10%;width:100px}.btn.btn-aktif{background-color:#acadea}.btn.btn-aktif:hover{background-color:#fff;color:#acadea;border-color:#acadea}.card.card-custom{border-color:#acadea}.card-title.text-bold{font-weight:900!important;color:#acadea}section.contact.bg-color-custom{color:#acadea}section.bg-color-purple{background-color:#acadea;height:20px}footer.bg-color-purple{background-color:#acadea;color:#fff}
+section.bg-custom {
+    background-image: url(../../assets-homepage/img/Group1365.svg);
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+    padding: 250px 0
+}
+
+.mast {
+    position: relative;
+    width: 100%;
+    padding-top: 100px;
+    padding-bottom: 100px
+}
+
+@media (min-width:992px) {
+
+    .mast,
+    header.masth {
+        height: 100vh;
+        min-height: 775px;
+        padding-top: 0;
+        padding-bottom: 0
+    }
+}
+
+.img-size {
+    box-sizing: border-box;
+    width: 70vh
+}
+
+.nav-item.aktif {
+    color: #fff;
+    background-color: #acadea;
+    border-radius: 10%;
+    width: 100px
+}
+
+.btn.btn-aktif {
+    background-color: #acadea
+}
+
+.btn.btn-aktif:hover {
+    background-color: #fff;
+    color: #acadea;
+    border-color: #acadea
+}
+
+.nav-link {
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 16px;
+    background-color: #acadea;
+    font-size: 12px;
+    margin: 3px;
+    padding: 5px 14px;
+}
+
+.nav-link:hover {
+    background-color: #fff;
+    color: #acadea;
+    border: 1px solid #acadea;
+}
+
+.card.card-custom {
+    border-color: #acadea
+}
+
+.card-title.text-bold {
+    font-weight: 900 !important;
+    color: #acadea
+}
+
+section.contact.bg-color-custom {
+    color: #acadea
+}
+
+section.bg-color-purple {
+    background-color: #acadea;
+    height: 20px
+}
+
+footer.bg-color-purple {
+    background-color: #acadea;
+    color: #fff
+}

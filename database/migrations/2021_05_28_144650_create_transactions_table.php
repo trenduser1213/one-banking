@@ -13,15 +13,15 @@ class CreateTransactionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('transaction', function (Blueprint $table) {
+        Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('sender')->constrained('user');
-            $table->foreignId('receiver')->constrained('user');
+            $table->foreignId('sender')->constrained('users');
+            $table->foreignId('receiver')->constrained('users');
             $table->string('date');
             $table->integer('amount');
             $table->text('description');
             $table->string('email_reciever');
-            $table->foreignId('receiver_bank_type')->constrained('user');
+            $table->foreignId('receiver_bank_type')->constrained('users');
             $table->timestamps();
         });
     }

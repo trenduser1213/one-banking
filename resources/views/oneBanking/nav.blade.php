@@ -5,7 +5,9 @@
                     <li class="nav-item"><a class="nav-link text-dark js-scroll-trigger" href="#download">home</a></li>
                     <li class="nav-item"><a class="nav-link text-dark js-scroll-trigger" href="#features">About Us<br></a></li>
                     <li class="nav-item"><a class="nav-link text-dark js-scroll-trigger" href="#contact">Contact</a></li>
-                </ul><button class="btn btn-aktif" type="button">Log in</button>
+                </ul>
+                {{-- <button class="btn btn-aktif" type="button">Log in</button> --}}
+                <a class="nav-link" href="{{ route('login') }}">LOG IN</a>
             </div>
         </div>
     </nav>
