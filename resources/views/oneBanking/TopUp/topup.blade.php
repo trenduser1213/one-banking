@@ -54,13 +54,6 @@
             </div>
         </div>
         <div class="col">
-            {{-- <div class="card card-body d-flex transfer-form-container mb-3">
-                <p class="card-title">Action</p>
-                <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#topUpModal">
-                    Top Up 
-                </button>
-                <button type="button" class="btn btn-success mb-3">Transfer</button>
-            </div> --}}
             <div class="transaction-container">
                 <div class="card card-transaction-container">
                     <div class="card-body d-flex transfer-form-container">
@@ -70,12 +63,6 @@
                             <div class="mb-3">
                                 <p>Bank : </p> 
                                 <input type="text" class="form-control" id="name_bank" readonly value="{{ $user->bank->name_bank }}">
-                                {{-- <select class="form-select" aria-label="Default select example" id="bank_type" name="bank_type">
-                                    <option selected>Open this select menu</option>
-                                    @foreach ($banks as $bank)
-                                        <option value="{{ $bank->id }}">{{ $bank->name_bank }}</option>
-                                    @endforeach
-                                </select> --}}
                             </div>
                             <div class="mb-3">
                                 <p>Account Number : </p> 

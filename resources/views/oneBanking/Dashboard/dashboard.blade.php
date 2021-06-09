@@ -2,14 +2,6 @@
 
 @section('content')
 
-@php
-    use Illuminate\Support\Facades\Route;
-
-    $route = Route::current();
-    // dd($route);
-    // var_dump($route);
-    // var_dump('hehe');
-@endphp
 <div class="container-fluid container-holder">
     <div class="row row-container">
         <div class="col-md-4">
