@@ -1,0 +1,107 @@
+.heading {
+    display: flex;
+    justify-content: space-between;
+}
+
+body {
+    padding: 50px 50px;
+    background-color: #F2F3F7;
+}
+
+.header-icon {
+    margin-left: 25px;
+}
+
+.nav-link {
+    color: black;
+    text-decoration: none;
+    display: contents;
+}
+
+.nav-link:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.container-fluid.container-holder {
+    height: 100%;
+    padding-top: 25px;
+}
+
+.row.row-container {
+    height: 70vh;
+}
+
+.col.profile-show {
+    height: 20vh;
+}
+
+.col.profile-container {
+    margin-bottom: 24px;
+}
+
+.col.card-container {
+    margin-bottom: 24px;
+}
+
+.transaction-container {
+    height: 80vh;
+}
+
+.card-transaction-container {
+    height: 100%;
+
+}
+
+.card-body-box {
+    margin: 20px;
+}
+
+.credit-card-container {
+    background-image: url('/asset/img/background.svg');
+    height: 25vh;
+    background-size: cover;
+}
+
+.card {
+    border-radius: 10px;
+}
+
+.feature-btn {
+    color: white;
+    text-decoration: none;
+    background-color: #57B894;
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    /* padding-left: 12px; */
+    /* margin: 0px; */
+}
+
+.feature-btn:hover {
+    color: white;
+}
+
+.feature-btn p {
+    margin: 10px;
+    font-size: 18px;
+}
+
+.card-body-container {
+    flex-direction: column;
+    color: white;
+}
+
+.profile-image {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+}
+
+.profile-data p {
+    margin: 0px;
+}
+
+.profile-data {
+    padding-left: 12px;
+}

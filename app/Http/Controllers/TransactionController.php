@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Transaction;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
@@ -34,7 +36,20 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $request->validate([
+        //     'bank_type' => 'required',
+        //     'amount' => 'required|integer|min:10000|max:5000000',
+        // ]);
+
+        // $transaction = Transaction::create([
+        //     'sender' => Auth::user()->account_number,
+        //     'receiver' => Auth::user()->account_number,
+        //     'date' => now()->format('d-m-Y'),
+        //     'amount' => $request->input('amount'),
+        //     'description' => 'Top Up',
+        //     'email_receiver' => Auth::user()->email,
+        //     'receiver_bank_type' => $request->input('bank_type'),
+        // ]);
     }
 
     /**
