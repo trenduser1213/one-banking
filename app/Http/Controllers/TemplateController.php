@@ -17,13 +17,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $banks = Bank::all();
-        $transactions = Transaction::paginate(5);
-
-        return view('oneBanking.dashboard', [
-            'banks' => $banks,
-            'transactions' => $transactions,
-        ]);
+        //
     }
 
     /**
@@ -44,11 +38,7 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        $transactionController = new TransactionController;
-        $transactionController->store($request);
-
-        $this->update($request, Auth::user()->id);
-        return redirect('/dashboard');
+        //
     }
 
     /**
@@ -82,19 +72,7 @@ class DashboardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
-
-        $request->validate([
-            'bank_type' => 'required',
-            'amount' => 'required|integer|min:10000|max:5000000',
-        ]);
-
-        $user = User::where('id', $id)
-            ->update([
-                'balance' => $user->balance + $request->input('amount'),
-            ]);
-
-        return redirect('/dashboard');
+        //
     }
 
     /**

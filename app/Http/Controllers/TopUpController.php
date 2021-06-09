@@ -8,7 +8,7 @@ use App\Models\Bank;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 
-class DashboardController extends Controller
+class TopUpController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,7 +21,7 @@ class DashboardController extends Controller
         $banks = Bank::all();
         $transactions = Transaction::paginate(5);
 
-        return view('oneBanking.Dashboard.dashboard', [
+        return view('oneBanking.TopUp.topup', [
             'user' => $user,
             'banks' => $banks,
             'transactions' => $transactions,
@@ -46,7 +46,22 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'amount' => 'required|integer|min:10000|max:5000000',
+        ]);
+
+        $transaction = Transaction::create([
+            'sender' => Auth::user()->account_number,
+            'receiver' => Auth::user()->account_number,
+            'date' => now()->format('d-m-Y H:i:s'),
+            'amount' => $request->input('amount'),
+            'description' => 'Top Up',
+            'email_receiver' => Auth::user()->email,
+            'receiver_bank_type' => Auth::user()->bank_type,
+        ]);
+
+        $this->update($request, Auth::user()->id);
+        return redirect('/topup');
     }
 
     /**
@@ -80,7 +95,18 @@ class DashboardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        $request->validate([
+            'amount' => 'required|integer|min:10000|max:5000000',
+        ]);
+
+        $user = User::where('id', $id)
+            ->update([
+                'balance' => $user->balance + $request->input('amount'),
+            ]);
+
+        return redirect('/topup');
     }
 
     /**

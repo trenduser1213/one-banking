@@ -17,15 +17,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $user = User::find(Auth::user()->id);
-        $banks = Bank::all();
-        $transactions = Transaction::paginate(5);
-
-        return view('oneBanking.Dashboard.dashboard', [
-            'user' => $user,
-            'banks' => $banks,
-            'transactions' => $transactions,
-        ]);
+        //
     }
 
     /**

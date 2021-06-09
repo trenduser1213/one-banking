@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Dashboard2Controller;
+use App\Http\Controllers\TransferController;
+use App\Http\Controllers\TopUpController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,5 +23,13 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::resource('/dashboard1', DashboardController::class);
+
+// Route::view('/topup', 'oneBanking.TopUp.topup');
+Route::resource('/topup', TopUpController::class);
+
+// Route::view('/dashboard', 'oneBanking.Dashboard.dashboard');
 Route::resource('/dashboard', DashboardController::class);
-// Route::resource('/dashboard', Dashboard2Controller::class);
+
+Route::view('/transfer', 'oneBanking.Transfer.transfer');
+// Route::resource('/transfer', TransferController::class);

@@ -1,4 +1,4 @@
-@extends('oneBanking.app')
+@extends('oneBanking.Home.app')
 
 @section('content')
     <header id="page-top" class="mast">

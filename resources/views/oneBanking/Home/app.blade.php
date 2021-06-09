@@ -14,7 +14,7 @@
 </head>
 
 <body id="page-top">
-    @include('oneBanking.nav')
+    @include('oneBanking.Home.nav')
     
     @yield('content')
     
@@ -38,7 +38,7 @@
         </div>
     </footer>
 
-    @include('oneBanking.footer')
+    @include('oneBanking.Home.footer')
 </body>
 
 </html>
