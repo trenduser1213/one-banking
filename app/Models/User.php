@@ -21,7 +21,8 @@ class User extends Authenticatable
         'email',
         'password',
         'balance',
-        'bank_type'
+        'bank_type',
+        'account_number',
     ];
 
     /**
@@ -32,6 +33,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'email_verified_at',
+        'created_at',
+        'updated_at'
     ];
 
     /**

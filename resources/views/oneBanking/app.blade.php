@@ -18,7 +18,6 @@
     
     @yield('content')
     
-    
     <footer class="bg-color-purple">
         <div class="container">
             <h5></h5>

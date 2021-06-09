@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Bank;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 
-class TransactionController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +17,13 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        $banks = Bank::all();
+        $transactions = Transaction::paginate(5);
+
+        return view('oneBanking.dashboard', [
+            'banks' => $banks,
+            'transactions' => $transactions,
+        ]);
     }
 
     /**
@@ -36,6 +44,8 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
+
         $request->validate([
             'bank_type' => 'required',
             'amount' => 'required|integer|min:10000|max:5000000',
@@ -44,12 +54,15 @@ class TransactionController extends Controller
         $transaction = Transaction::create([
             'sender' => Auth::user()->account_number,
             'receiver' => Auth::user()->account_number,
-            'date' => now()->format('d-m-Y'),
+            'date' => now()->format('d-m-Y H:i:s'),
             'amount' => $request->input('amount'),
             'description' => 'Top Up',
             'email_receiver' => Auth::user()->email,
             'receiver_bank_type' => $request->input('bank_type'),
         ]);
+
+        $this->update($request, Auth::user()->id);
+        return redirect('/dashboard');
     }
 
     /**
@@ -83,7 +96,19 @@ class TransactionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        $request->validate([
+            'bank_type' => 'required',
+            'amount' => 'required|integer|min:10000|max:5000000',
+        ]);
+
+        $user = User::where('id', $id)
+            ->update([
+                'balance' => $user->balance + $request->input('amount'),
+            ]);
+
+        return redirect('/dashboard');
     }
 
     /**
