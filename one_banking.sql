@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 09 Jun 2021 pada 07.18
+-- Waktu pembuatan: 09 Jun 2021 pada 18.35
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.3.14
 
@@ -40,8 +40,8 @@ CREATE TABLE `banks` (
 --
 
 INSERT INTO `banks` (`id`, `name_bank`, `created_at`, `updated_at`) VALUES
-(1, 'BRI', NULL, NULL),
-(2, 'Mandiri', NULL, NULL);
+(1, 'Mandiri', NULL, NULL),
+(2, 'BRI', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -118,14 +118,8 @@ CREATE TABLE `transactions` (
 --
 
 INSERT INTO `transactions` (`id`, `sender`, `receiver`, `date`, `amount`, `description`, `email_receiver`, `receiver_bank_type`, `created_at`, `updated_at`) VALUES
-(1, NULL, NULL, '09-06-2021', 100000, 'Top Up', 'carissa@gmail.com', 1, '2021-06-08 21:17:38', '2021-06-08 21:17:38'),
-(2, NULL, NULL, '09-06-2021', 50000, 'Top Up', 'carissa@gmail.com', 1, '2021-06-08 21:37:03', '2021-06-08 21:37:03'),
-(3, NULL, NULL, '09-06-2021', 50000, 'Top Up', 'carissa@gmail.com', 1, '2021-06-08 21:39:10', '2021-06-08 21:39:10'),
-(4, NULL, NULL, '09-06-2021 04:44:26', 20000, 'Top Up', 'carissa@gmail.com', 1, '2021-06-08 21:44:26', '2021-06-08 21:44:26'),
-(5, NULL, NULL, '09-06-2021 04:51:59', 35000, 'Top Up', 'carissa@gmail.com', 1, '2021-06-08 21:51:59', '2021-06-08 21:51:59'),
-(6, NULL, NULL, '09-06-2021 04:54:34', 5000, 'Top Up', 'carissa@gmail.com', 1, '2021-06-08 21:54:34', '2021-06-08 21:54:34'),
-(7, NULL, NULL, '09-06-2021 04:54:41', 10000, 'Top Up', 'carissa@gmail.com', 1, '2021-06-08 21:54:41', '2021-06-08 21:54:41'),
-(8, NULL, NULL, '09-06-2021 04:58:45', 10000, 'Top Up', 'carissa@gmail.com', 1, '2021-06-08 21:58:45', '2021-06-08 21:58:45');
+(1, NULL, NULL, '09-06-2021 16:26:50', 10000, 'Top Up', 'carissa@gmail.com', NULL, '2021-06-09 09:26:50', '2021-06-09 09:26:50'),
+(2, NULL, NULL, '09-06-2021 16:29:47', 115000, 'Top Up', 'carissa@gmail.com', 1, '2021-06-09 09:29:47', '2021-06-09 09:29:47');
 
 -- --------------------------------------------------------
 
@@ -152,7 +146,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `account_number`, `name`, `email`, `email_verified_at`, `password`, `balance`, `bank_type`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'Carissa', 'carissa@gmail.com', NULL, '$2y$10$b1n4ZuM7aLANX0F6zLGzy.5U8HMo1vB8IQKXOmF/DIsawhnN5NOzy', 275000, NULL, NULL, '2021-06-08 21:17:08', '2021-06-08 21:58:45');
+(1, NULL, 'Carissa', 'carissa@gmail.com', NULL, '$2y$10$p2oNxP4kQv9gk/IPPXd8L.SVtEYZ5sw9xExLvWbPsT6SQljEULqMG', 125000, 1, NULL, '2021-06-09 09:26:34', '2021-06-09 09:29:47');
 
 --
 -- Indexes for dumped tables
@@ -226,7 +220,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
@@ -242,7 +236,7 @@ ALTER TABLE `users`
 -- Ketidakleluasaan untuk tabel `transactions`
 --
 ALTER TABLE `transactions`
-  ADD CONSTRAINT `transactions_receiver_bank_type_foreign` FOREIGN KEY (`receiver_bank_type`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `transactions_receiver_bank_type_foreign` FOREIGN KEY (`receiver_bank_type`) REFERENCES `banks` (`id`),
   ADD CONSTRAINT `transactions_receiver_foreign` FOREIGN KEY (`receiver`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `transactions_sender_foreign` FOREIGN KEY (`sender`) REFERENCES `users` (`id`);
 
