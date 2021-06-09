@@ -1,0 +1,91 @@
+.heading {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  body {
+    padding: 50px 50px;
+    background-color: #F2F3F7;
+  }
+  
+  .header-icon {
+    margin-left: 25px;
+  }
+  
+  .container-fluid.container-holder {
+    height: 100%;
+    padding-top: 25px;
+  }
+  
+  .row.row-container {
+    height: 70vh;
+  }
+  
+  .col.profile-show {
+    height: 20vh;
+  }
+  
+  .col.profile-container {
+    margin-bottom: 24px;
+  }
+  
+  .col.card-container {
+    margin-bottom: 24px;
+  }
+  .transaction-container{
+      height: 75vh;
+  }
+  .card-transaction-container{
+      height: 100%;
+  }
+
+  .credit-card-container{
+      background-image: url('/asset/img/background.svg');
+      height: 25vh;
+      background-size: cover;
+  }
+
+  .card{
+      border-radius: 10px;
+  }
+
+  .transfer-btn{
+      background-color: #57B894;
+      border-radius: 10px;
+      padding: 10px 8px;
+  }
+
+  .card-body-container{
+      flex-direction: column;
+      color: white;
+  }
+
+  .profile-image{
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+  }
+
+  .profile-data p{
+      margin: 0px;
+  }
+
+  .profile-data{
+    padding-left: 12px;
+}
+
+  .transfer-btn p{
+      font-size: 18px;
+      color: white;
+      padding-left: 12px;
+    margin: 0px;
+}
+
+.transfer-form-container{
+  flex-direction: column;
+}
+.send-button{
+  margin-top: auto;
+}
+  
+  
