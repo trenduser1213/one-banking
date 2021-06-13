@@ -29,12 +29,12 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Account Number') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="account_number" type="text" class="form-control @error('account_number') is-invalid @enderror" name="account_number" value="{{ old('account_number') }}" required autocomplete="account number" autofocus>
 
-                                @error('name')
+                                @error('account_number')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -60,7 +60,8 @@
                             <label for="bank_type" class="col-md-4 col-form-label text-md-right">{{ __('Bank') }}</label>
 
                             <div class="col-md-6">
-                                <select class="form-select" aria-label="Default select example" id="bank_type" name="bank_type">
+                                <select class="form-control @error('bank_type') is-invalid @enderror" aria-label="Default select example" id="bank_type" name="bank_type">
+                                        <option selected>--Masukan Bank Anda--</option>
                                     @foreach ($banks as $bank)
                                         <option value="{{ $bank->id }}">{{ $bank->name_bank }}</option>
                                     @endforeach

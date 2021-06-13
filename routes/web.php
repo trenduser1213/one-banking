@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\Dashboard2Controller;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\TransferController;
 use App\Http\Controllers\TopUpController;
 use Illuminate\Support\Facades\Route;
@@ -22,10 +22,10 @@ Route::view('/', 'index');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::resource('/topup', TopUpController::class);
-
 Route::resource('/dashboard', DashboardController::class);
 
-Route::view('/transfer', 'oneBanking.Transfer.transfer');
-// Route::resource('/transfer', TransferController::class);
+Route::get('/transaction/destroy/{id}',[TransactionController::class,'destroy']);
+
+Route::get('/transfer',[TransferController::class,'index']);
+Route::Post('/transfer/send',[TransferController::class,'send']);

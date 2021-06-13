@@ -59,8 +59,9 @@ class TopUpController extends Controller
             'email_receiver' => Auth::user()->email,
             'receiver_bank_type' => Auth::user()->bank_type,
         ]);
-
+        session()->flash('success','top up was successfull');
         $this->update($request, Auth::user()->id);
+
         return redirect('/topup');
     }
 
@@ -105,18 +106,9 @@ class TopUpController extends Controller
             ->update([
                 'balance' => $user->balance + $request->input('amount'),
             ]);
-
+        
+            
         return redirect('/topup');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
