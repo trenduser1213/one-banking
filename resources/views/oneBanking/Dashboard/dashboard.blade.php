@@ -1,7 +1,7 @@
 @extends('oneBanking.layouts.app')
 
 @section('content')
-
+@include('oneBanking.layouts.sweetalert')
 <div class="container-fluid container-holder">
     <div class="row row-container">
         <div class="col-md-4">
@@ -43,11 +43,11 @@
                     <div class="card">
                         <div class="card-body action-container">
                             <h5 class="card-title" style="font-weight: bold;padding-bottom: 25px">Action</h5>
-                            <a href="{{ url('/topup') }}" class="d-flex feature-btn align-items-center">
+                            <a href="{{ url('/topup') }}" class="btn btn-success d-flex feature-btn align-items-center">
                                 <img src="{{asset('asset/img/topup-btn.svg')}}" class="img-fluid" width="44px"/>
                                 <p>Top Up</p>
                             </a>
-                            <a href="{{ url('/transfer') }}" class="d-flex feature-btn align-items-center">
+                            <a href="/transfer" class=" btn btn-success d-flex feature-btn align-items-center">
                                 <img src="{{asset('asset/img/transfer-btn.svg')}}" class="img-fluid" width="44px"/>
                                 <p>Transfer</p>
                             </a>
@@ -61,20 +61,30 @@
             <div class="card card-transaction-container">
                 <div class="card-body card-body-box">
                     <h5 class="card-title" style="font-weight: bold;padding-bottom: 25px">Latest transactions</h5>
-                    <table class="table">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">Time</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">Amount</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($transactions as $transaction)
                                 <tr>
-                                    <th scope="row">{{ $transaction->date }}</th>
-                                    <td>{{ $transaction->description }}</td>
-                                    <td class="text-end">{{ $transaction->amount }}</td>
+                                    <td scope="row">{{ $transaction->date }}</td>
+                                    @if ($transaction->description == "Top Up")
+                                    <td><span class="badge bg-success">{{ $transaction->description }}</span></td>
+                                    <td class="text-success"><b>+ {{ $transaction->amount }}</b></td>
+                                    @endif
+                                    @if ($transaction->description == "Transfer")
+                                    <td><span class="badge bg-primary">{{ $transaction->description }}</span></td>
+                                    <td class="text-danger"><b>- {{ $transaction->amount }}</b></td>
+                                    @endif
+                                    <td>
+                                        <a href="/transaction/destroy/{{$transaction->id}}" class="btn btn-danger btn-sm"><i class="fas fa-trash-restore-alt"></i></a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

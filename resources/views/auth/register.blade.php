@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+
+@php
+    // dd($banks);
+@endphp
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -24,6 +28,19 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Account Number') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="account_number" type="text" class="form-control @error('account_number') is-invalid @enderror" name="account_number" value="{{ old('account_number') }}" required autocomplete="account number" autofocus>
+
+                                @error('account_number')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
@@ -36,6 +53,19 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="bank_type" class="col-md-4 col-form-label text-md-right">{{ __('Bank') }}</label>
+
+                            <div class="col-md-6">
+                                <select class="form-control @error('bank_type') is-invalid @enderror" aria-label="Default select example" id="bank_type" name="bank_type">
+                                        <option selected>--Masukan Bank Anda--</option>
+                                    @foreach ($banks as $bank)
+                                        <option value="{{ $bank->id }}">{{ $bank->name_bank }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 

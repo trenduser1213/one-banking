@@ -1,7 +1,7 @@
 @extends('oneBanking.layouts.app')
 
 @section('content')
-
+@include('oneBanking.layouts.sweetalert')
 <div class="container-fluid container-holder">
     <div class="d-flex align-items-center" style="padding-bottom: 24px">
         <a href="{{ url('/dashboard') }}">

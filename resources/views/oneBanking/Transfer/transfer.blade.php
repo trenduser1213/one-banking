@@ -2,6 +2,8 @@
 
 @section('content')
 
+@include('oneBanking.layouts.sweetalert')
+
 <div class="container-fluid container-holder">
     <div class="d-flex align-items-center" style="padding-bottom: 24px">
         <a href="{{ url('/dashboard') }}">
@@ -55,28 +57,31 @@
         <div class="col transaction-container">
             <div class="card card-transaction-container">
                 <div class="card-body d-flex transfer-form-container">
-                    <div class="mb-3">
-                        <p>Select Bank</p>
-                        <select class="form-select" aria-label="Default select example" id="bankselect">
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputaccount" class="form-label">Account Number</label>
-                        <input type="text" class="form-control" id="exampleInputaccount">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputemail" class="form-label">Recipient's E-mail</label>
-                        <input type="email" class="form-control" id="exampleInputemail">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleInputamount" class="form-label">Amount</label>
-                        <input type="number" class="form-control" id="exampleInputamount">
-                    </div>
-                    <button type="button" class="btn btn-success send-button">Send</button>
+                    <form action="/transfer/send" method="POST">
+                        @csrf
+                        @method('POST')
+                        <div class="mb-3">
+                            <p>Select Bank</p>
+                            <select class="form-select" name="bank" aria-label="Default select example" id="bankselect" required>
+                                @foreach ($bank as $data)
+                                <option value="{{$data->id}}">{{$data->name_bank}}</option>    
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputaccount" class="form-label">Recipient Account Number</label>
+                            <input type="text" name="account_number" class="form-control" id="exampleInputaccount" value="{{old('account_number')}}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputemail" class="form-label">Recipient's E-mail</label>
+                            <input type="email" name="email" class="form-control" id="exampleInputemail" value="{{old('email')}}" required> 
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputamount" class="form-label">Amount</label>
+                            <input type="number" name="amount" class="form-control" id="exampleInputamount" value="{{old('amount')}}" required>
+                        </div>
+                        <button type="submit" class="btn btn-success send-button">Send</button>
+                 </form>
                 </div>
             </div>
         </div>

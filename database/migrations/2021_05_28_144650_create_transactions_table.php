@@ -15,8 +15,8 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('sender')->nullable()->constrained('users');
-            $table->foreignId('receiver')->nullable()->constrained('users');
+            $table->string('sender');
+            $table->string('receiver');
             $table->string('date');
             $table->integer('amount');
             $table->text('description');
