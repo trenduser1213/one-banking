@@ -19,7 +19,7 @@ class DashboardController extends Controller
     {
         $user = User::find(Auth::user()->id);
         $banks = Bank::all();
-        $transactions = Transaction::where('sender',Auth::user()->account_number)->paginate(7);
+        $transactions = Transaction::where('sender', Auth::user()->account_number)->paginate(7);
 
         return view('oneBanking.Dashboard.dashboard', [
             'user' => $user,
