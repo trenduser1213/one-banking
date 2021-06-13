@@ -81,7 +81,7 @@
                             <input type="number" name="amount" class="form-control" id="exampleInputamount" value="{{old('amount')}}" required>
                         </div>
                         <button type="submit" class="btn btn-success send-button">Send</button>
-                 </form>
+                </form>
                 </div>
             </div>
         </div>
