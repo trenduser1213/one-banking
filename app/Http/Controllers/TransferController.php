@@ -41,11 +41,9 @@ class TransferController extends Controller
                 return back();
             }else{
                 $this->editBalanceReceiver($request,$request->account_number);
-                $this->editBalanceSender($request,Auth::user()->account_number);
-                
+                $this->editBalanceSender($request,Auth::user()->account_number);         
                 session()->flash('success','transfer was successfull');
-                return back();
-                
+                return back();         
             }
            
         }
@@ -61,7 +59,6 @@ class TransferController extends Controller
             ->update([
                 'balance' => $user->balance + $request->amount,
             ]);
-
     }
     public function editBalanceSender(Request $request,$id)
     {
@@ -74,6 +71,5 @@ class TransferController extends Controller
             ->update([
                 'balance' => $user->balance - $request->amount,
             ]);
-
     }
 }
