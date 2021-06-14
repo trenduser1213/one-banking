@@ -21,31 +21,59 @@ class TransferController extends Controller
     public function send(Request $request)
     {
         $data = User::where('account_number', $request->account_number)->get();
+        $admin = Bank::where('id',$request->bank)->first();
 
         if ($data->isEmpty()) {
             session()->flash('error', 'the receiver was not found');
             return back();
         } else {
-            $transaction = Transaction::create([
-                'sender' => Auth::user()->account_number,
-                'receiver' => $request->account_number,
-                'date' => now()->format('d-m-Y H:i:s'),
-                'amount' => $request->amount,
-                'description' => 'Transfer',
-                'email_receiver' => $request->email,
-                'receiver_bank_type' => $request->bank,
-
-            ]);
-            if (Auth::user()->balance < $request->amount) {
-                session()->flash('error', 'amount not enough');
+            if (Auth::user()->account_number == $request->account_number) {
+                session()->flash('error', 'the receiver was not found');
                 return back();
             }else{
-                $this->editBalanceReceiver($request,$request->account_number);
-                $this->editBalanceSender($request,Auth::user()->account_number);         
-                session()->flash('success','transfer was successfull');
-                return back();         
+                if (Auth::user()->bank_type == $request->bank) {
+                      $admin = 0;
+                    if (Auth::user()->balance < $request->amount + $admin) {
+                        session()->flash('error', 'amount not enough');
+                        return back();
+                    }else{
+                        $this->Transaction($request,$admin);
+                        $this->editBalanceReceiver($request,$request->account_number);
+                        $this->editBalanceSender($request,Auth::user()->account_number,$admin);         
+                        session()->flash('success','transfer was successfull');
+                        return back();         
+                    }
+                }else{
+                    $dataAdmin = $admin->admin;
+                    if (Auth::user()->balance < $request->amount + $dataAdmin) {
+                        session()->flash('error', 'amount not enough');
+                        return back();
+                    }else{
+                        $this->Transaction($request,$dataAdmin);
+                        $this->editBalanceReceiver($request,$request->account_number);
+                        $this->editBalanceSender($request,Auth::user()->account_number,$dataAdmin);         
+                        session()->flash('success','transfer was successfull');
+                        return back();         
+                    }
+                }
+               
+               
             }
+           
         }
+    }
+    public function Transaction(Request $request,$admin)
+    {
+        $transaction = Transaction::create([
+            'sender' => Auth::user()->account_number,
+            'receiver' => $request->account_number,
+            'date' => now()->format('d-m-Y H:i:s'),
+            'amount' => $request->amount,
+            'admin' =>$admin,
+            'description' => 'Transfer',
+            'email_receiver' => $request->email,
+            'receiver_bank_type' => $request->bank,
+        ]);
     }
     public function editBalanceReceiver(Request $request, $id)
     {
@@ -59,7 +87,7 @@ class TransferController extends Controller
                 'balance' => $user->balance + $request->amount,
             ]);
     }
-    public function editBalanceSender(Request $request, $id)
+    public function editBalanceSender(Request $request, $id,$biaya)
     {
         $user = User::where('account_number', $id)->first();
         $request->validate([
@@ -68,7 +96,7 @@ class TransferController extends Controller
 
         $user = User::where('account_number', $id)
             ->update([
-                'balance' => $user->balance - $request->amount,
+                'balance' => $user->balance - $request->amount-$biaya
             ]);
     }
 }

@@ -30,7 +30,7 @@
                             <div style="margin-top: auto" class="d-flex justify-content-between">
                                 <div>
                                     <h6 style="font-size: 16px">Balance</h6>
-                                    <h6 style="font-size: 16px;font-weight: bold;">Rp {{ Auth::user()->balance }}</h6>
+                                    <h6 style="font-size: 16px;font-weight: bold;">Rp.{{number_format(Auth::user()->balance) }}</h6>
                                 </div>
                                 <img src="{{asset('asset/img/wifi.svg')}}" width="23px"/>
                             </div>
@@ -67,6 +67,7 @@
                                 <th scope="col">Time</th>
                                 <th scope="col">Description</th>
                                 <th scope="col">Amount</th>
+                                <th scope="col">Admin</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -80,13 +81,14 @@
                                     @endif
                                     @if ($transaction->description == "Transfer")
                                         @if ($transaction->receiver == Auth::user()->account_number)
-                                            <td><span class="badge bg-primary">{{ $transaction->description }}</span></td>
-                                            <td class="text-danger"><b>+ {{ $transaction->amount }}</b></td>
+                                            <td><span class="badge bg-warning">{{ $transaction->description }}</span></td>
+                                            <td class="text-primary"><b> + {{ $transaction->amount }}</b></td>
                                         @else
                                             <td><span class="badge bg-primary">{{ $transaction->description }}</span></td>
-                                            <td class="text-danger"><b>- {{ $transaction->amount }}</b></td>
+                                            <td class="text-danger"><b> - {{ $transaction->amount }}</b></td>
                                         @endif
                                     @endif
+                                    <td>{{$transaction->admin}}</td>
                                     <td>
                                         <a href="/transaction/destroy/{{$transaction->id}}" class="btn btn-danger btn-sm"><i class="fas fa-trash-restore-alt"></i></a>
                                     </td>

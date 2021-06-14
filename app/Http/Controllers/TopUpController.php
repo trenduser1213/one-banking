@@ -55,6 +55,7 @@ class TopUpController extends Controller
             'receiver' => Auth::user()->account_number,
             'date' => now()->format('d-m-Y H:i:s'),
             'amount' => $request->input('amount'),
+            'admin'     => 0,
             'description' => 'Top Up',
             'email_receiver' => Auth::user()->email,
             'receiver_bank_type' => Auth::user()->bank_type,

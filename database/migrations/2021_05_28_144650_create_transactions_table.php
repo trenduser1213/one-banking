@@ -19,6 +19,7 @@ class CreateTransactionsTable extends Migration
             $table->string('receiver');
             $table->string('date');
             $table->integer('amount');
+            $table->integer('admin');
             $table->text('description');
             $table->string('email_receiver');
             $table->foreignId('receiver_bank_type')->nullable()->constrained('banks');

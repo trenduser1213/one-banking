@@ -1,14 +1,10 @@
 @if (Session::has('success'))
     <script>
-        swal("success","(!!Session::get('success')!!)","success",{
-            button:"OK"
-        })
+        swal("success","your request was successfull","success")
     </script>
 @endif
 @if (Session::has('error'))
     <script>
-        swal("error",'your request was failed',"error",{
-            button:"OK"
-        })
+        swal("error",'your request was failed',"error")
     </script>
 @endif

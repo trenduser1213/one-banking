@@ -14,6 +14,7 @@ class Transaction extends Model
         'receiver',
         'date',
         'amount',
+        'admin',
         'description',
         'email_receiver',
         'receiver_bank_type',
