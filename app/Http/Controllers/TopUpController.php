@@ -59,7 +59,7 @@ class TopUpController extends Controller
             'email_receiver' => Auth::user()->email,
             'receiver_bank_type' => Auth::user()->bank_type,
         ]);
-        session()->flash('success','top up was successfull');
+
         $this->update($request, Auth::user()->id);
 
         return redirect('/topup');
@@ -106,9 +106,8 @@ class TopUpController extends Controller
             ->update([
                 'balance' => $user->balance + $request->input('amount'),
             ]);
-        
-            
+
+        session()->flash('success', 'top up was successfull');
         return redirect('/topup');
     }
-
 }

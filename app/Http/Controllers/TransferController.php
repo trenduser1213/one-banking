@@ -12,7 +12,7 @@ class TransferController extends Controller
 {
     public function index()
     {
-        $data=[
+        $data = [
             'bank' => Bank::all(),
             'user' => User::all()
         ];
@@ -20,12 +20,12 @@ class TransferController extends Controller
     }
     public function send(Request $request)
     {
-        $data = User::where('account_number',$request->account_number)->get();
-        
+        $data = User::where('account_number', $request->account_number)->get();
+
         if ($data->isEmpty()) {
-            session()->flash('error','the receiver was not found');
+            session()->flash('error', 'the receiver was not found');
             return back();
-        }else{
+        } else {
             $transaction = Transaction::create([
                 'sender' => Auth::user()->account_number,
                 'receiver' => $request->account_number,
@@ -34,10 +34,10 @@ class TransferController extends Controller
                 'description' => 'Transfer',
                 'email_receiver' => $request->email,
                 'receiver_bank_type' => $request->bank,
-    
+
             ]);
             if (Auth::user()->balance < $request->amount) {
-                session()->flash('error','amount not enough');
+                session()->flash('error', 'amount not enough');
                 return back();
             }else{
                 $this->editBalanceReceiver($request,$request->account_number);
@@ -45,12 +45,11 @@ class TransferController extends Controller
                 session()->flash('success','transfer was successfull');
                 return back();         
             }
-           
         }
     }
-    public function editBalanceReceiver(Request $request,$id)
+    public function editBalanceReceiver(Request $request, $id)
     {
-        $user = User::where('account_number',$id)->first();
+        $user = User::where('account_number', $id)->first();
         $request->validate([
             'amount' => 'required|integer|min:10000|max:5000000',
         ]);
@@ -60,9 +59,9 @@ class TransferController extends Controller
                 'balance' => $user->balance + $request->amount,
             ]);
     }
-    public function editBalanceSender(Request $request,$id)
+    public function editBalanceSender(Request $request, $id)
     {
-        $user = User::where('account_number',$id)->first();
+        $user = User::where('account_number', $id)->first();
         $request->validate([
             'amount' => 'required|integer|min:10000|max:5000000',
         ]);

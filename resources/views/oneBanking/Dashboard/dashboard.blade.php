@@ -75,12 +75,17 @@
                                 <tr>
                                     <td scope="row">{{ $transaction->date }}</td>
                                     @if ($transaction->description == "Top Up")
-                                    <td><span class="badge bg-success">{{ $transaction->description }}</span></td>
-                                    <td class="text-success"><b>+ {{ $transaction->amount }}</b></td>
+                                        <td><span class="badge bg-success">{{ $transaction->description }}</span></td>
+                                        <td class="text-success"><b>+ {{ $transaction->amount }}</b></td>
                                     @endif
                                     @if ($transaction->description == "Transfer")
-                                    <td><span class="badge bg-primary">{{ $transaction->description }}</span></td>
-                                    <td class="text-danger"><b>- {{ $transaction->amount }}</b></td>
+                                        @if ($transaction->receiver == Auth::user()->account_number)
+                                            <td><span class="badge bg-primary">{{ $transaction->description }}</span></td>
+                                            <td class="text-danger"><b>+ {{ $transaction->amount }}</b></td>
+                                        @else
+                                            <td><span class="badge bg-primary">{{ $transaction->description }}</span></td>
+                                            <td class="text-danger"><b>- {{ $transaction->amount }}</b></td>
+                                        @endif
                                     @endif
                                     <td>
                                         <a href="/transaction/destroy/{{$transaction->id}}" class="btn btn-danger btn-sm"><i class="fas fa-trash-restore-alt"></i></a>
