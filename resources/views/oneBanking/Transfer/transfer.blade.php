@@ -22,7 +22,7 @@
                             <img src="https://media.suara.com/pictures/970x544/2019/04/30/20041-kareena-kapoor-instagram.jpg" 
                             class="profile-image"/>
                             <div class="profile-data" >
-                                <p>Welcome</p>
+                                <p>Welcome,</p>
                                 <p style="font-weight: bold">{{ Auth::user()->name }}</p>
                             </div>
                         </div>
