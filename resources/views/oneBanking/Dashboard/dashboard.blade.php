@@ -77,15 +77,15 @@
                                     <td scope="row">{{ $transaction->date }}</td>
                                     @if ($transaction->description == "Top Up")
                                         <td><span class="badge bg-success">{{ $transaction->description }}</span></td>
-                                        <td class="text-success"><b>+ {{ $transaction->amount }}</b></td>
+                                        <td class="text-success"><b>+ {{ number_format($transaction->amount) }}</b></td>
                                     @endif
                                     @if ($transaction->description == "Transfer")
                                         @if ($transaction->receiver == Auth::user()->account_number)
                                             <td><span class="badge bg-warning">{{ $transaction->description }}</span></td>
-                                            <td class="text-primary"><b> + {{ $transaction->amount }}</b></td>
+                                            <td class="text-primary"><b>+ {{ number_format($transaction->amount) }}</b></td>
                                         @else
                                             <td><span class="badge bg-primary">{{ $transaction->description }}</span></td>
-                                            <td class="text-danger"><b> - {{ $transaction->amount }}</b></td>
+                                            <td class="text-danger"><b> - {{ number_format($transaction->amount) }}</b></td>
                                         @endif
                                     @endif
                                     <td>{{$transaction->admin}}</td>
