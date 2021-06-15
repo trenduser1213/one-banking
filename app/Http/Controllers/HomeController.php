@@ -14,7 +14,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        return redirect()->action([DashboardController::class, 'index']);
+        return redirect()->action([DashboardController::class, 'index'])->with('success', 'You are in Dashboard!');
         // return view('home');
     }
 }
