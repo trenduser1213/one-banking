@@ -25,7 +25,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/topup', TopUpController::class);
 Route::resource('/dashboard', DashboardController::class);
 
-Route::get('/transaction/destroy/{id}',[TransactionController::class,'destroy']);
+Route::get('/transaction/destroy/{id}', [TransactionController::class, 'destroy']);
 
-Route::get('/transfer',[TransferController::class,'index']);
-Route::Post('/transfer/send',[TransferController::class,'send']);
+Route::get('/transfer', [TransferController::class, 'index']);
+Route::Post('/transfer/send', [TransferController::class, 'send']);

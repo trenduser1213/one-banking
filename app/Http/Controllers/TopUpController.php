@@ -108,7 +108,7 @@ class TopUpController extends Controller
                 'balance' => $user->balance + $request->input('amount'),
             ]);
 
-        session()->flash('success', 'top up was successfull');
+        session()->flash('success', 'Top Up Successfull!');
         return redirect('/topup');
     }
 }

@@ -1,10 +1,10 @@
 @if (Session::has('success'))
     <script>
-        swal("success","your request was successfull","success")
+        swal("Success","{{ Session::get('success') }}","success")
     </script>
 @endif
 @if (Session::has('error'))
     <script>
-        swal("error",'your request was failed',"error")
+        swal("Error","{{ Session::get('error') }}","error")
     </script>
 @endif
