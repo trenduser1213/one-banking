@@ -39,7 +39,7 @@
                             <div style="margin-top: auto" class="d-flex justify-content-between">
                                 <div>
                                     <h6 style="font-size: 16px">Balance</h6>
-                                    <h6 style="font-size: 16px; font-weight: bold;">Rp.{{ number_format (Auth::user()->balance) }}</h6>
+                                    <h6 style="font-size: 16px; font-weight: bold;">Rp. {{ number_format (Auth::user()->balance) }}</h6>
                                 </div>
                                 <img src="{{asset('asset/img/wifi.svg')}}" width="23px"/>
                             </div>
